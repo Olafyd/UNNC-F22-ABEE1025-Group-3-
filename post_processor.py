@@ -23,6 +23,7 @@ def eplus_to_datetime(date_str):
 		date_str = date_str[0:-8] + '00' + date_str[-6:]
 		date_pd = pd.to_datetime(date_str) + dt.timedelta(days = 1)
 	# the data is inaccurate --> correct it --> transfer into pandas form 
+
 	return date_pd 
 
 '''
@@ -43,15 +44,15 @@ def plot_1D_results(output_paths, plot_column_name,
 	# with axs --> easier to design the plot
 	fontsize = 20
 	#set the size of the plot to 10*20
-	for data in output_paths.keys():
-		this_path = output_paths[data] 
-		this_df = pd.read_csv(this_path)
+	for explusout.csv in this_path:
+		this_path = './param_exp_1'
+		this_df = pd.read_cvs(this_path)
 		# input the data from result of run_one_parameter_paramatric
 		this_df['Date/Time'] = '2002' + this_df['Date/Time']
 		this_df['Date/Time'] = this_df['Date/Time'].apply(eplus_to_datetime)
 		# adding year to the date_str, then transfer the data into pandas form
-		x_st_date = this_df['Date/Time'].iloc[0]
-		x_ed_date = this_df['Date/Time'].iloc[-1]
+		x_st_date = this_df.iloc[0,0]
+		x_ed_date = this_df.iloc[0,-1]
 		# set the starting and ending of the x_date
 		x_date = this_df['Date/Time']
 		y_iat = this_df[plot_column_name].values
@@ -59,8 +60,8 @@ def plot_1D_results(output_paths, plot_column_name,
 		# the y value is defined in the file cw_part2_main.py
 		axs.plot(x_date, y_iat, 
 			alpha = 0.7,
-			linestyle = '-',
-			linewidth = 2, 
+			ls = '--',
+			lw = 2, 
 			label = data)
 		# plot with x and y and style the plot
 
@@ -78,20 +79,13 @@ def plot_1D_results(output_paths, plot_column_name,
 		# set the font size of ticks in xaxis and yaxis
 		axs.tick_params('x', labelrotation = 45)
 		# rotate xaxis parameters by 45 degree
-		axs.set_xlabel('Time (%s to %s)'%(x_st_date, x_ed_date),
+		axs.set_xlabel('Time (%s to %s)'%(data_st_date, data_ed_date),
 						fontsize = fontsize)
 		axs.set_ylabel('Air Temperature (C)',
 						fontsize = fontsize)
-		# set xaxis and yaxis labels
+		# set x and y labels
 		axs.yaxis.get_offset_text().set_fontsize(fontsize*0.7)
-		axs.legend(loc = 'upper left', fontsize = 10)
-		# the information box
-		plt.title('Simulation of Indoor Air Temperature vs. SHGC', fontsize = 25)
-		# set the title
-		plt.tight_layout()
-		plt.savefig('./param_exp_1/plot.png')
-		
-		
+		axs.legend(fontsize = fontsize)
 '''
 	Outputs: 
 			this function has no outputs. 

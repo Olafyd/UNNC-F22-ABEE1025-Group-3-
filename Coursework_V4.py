@@ -1,10 +1,69 @@
 # Part_4 of the Coursework
-# Creator Name: Yu-Chieh CHUEH
+# Creator Name: Yu-Chieh CHUEH Yude Fu
 # Date: 17.01.2023
 
 from tkinter import *
 from PIL import ImageTk, Image
-from logic import *
+import math
+pai = math.pi
+
+global R
+global I
+global L
+global P
+global ratio_equal
+global clicked
+global options_p
+global E
+###Set global variables
+
+def ratio_func(ratio):
+    global ratio_equal
+
+    '''This is in order to get the effective ratio 
+    which is varied for different end conditions 
+    of the flexural points'''
+
+    ratio_equal = ratio
+
+def calculate():
+    
+    '''this is to calculate and show the answer
+    ased on the formula P= pi^2*E*I/(L^2)'''
+
+    R = float(e_R.get())
+    '''this is to get the entered radius value'''
+
+    I = float((pai*(R**4))/4)
+    '''this is to get the I(Second Moment of Area) value
+    ased on the equation I = pai*(R**4))/4'''
+
+    if ratio_equal == None:
+        print("Please choose the type of connection first")
+        return
+    else:
+        L = float(float(e_L.get())*ratio_equal)
+
+    clicked = StringVar()
+    clicked=options_p[0]
+    '''this is to set the default value of the material'''
+    
+    if clicked == "Wood":
+        E = 1.43
+    if clicked == "Brick":
+        E =14
+    '''this is to get the E(Young's modulus) value of chosen material'''
+
+    res_P = (pai**2)*float(E)*I/(L**2)
+    '''this is to get the P(bucling load) based on the equation
+    P = (pai**2)*E*I/(L**2)'''
+
+    result = format(res_P,'.3f')
+    P.set(result) 
+    Lable_P_e.update()
+    return result
+    
+    '''this is to return the result'''
 # the second is for the icon
 
 ''' -------Foundation------- '''
@@ -70,13 +129,13 @@ Label_P_e = Label(Frame_result, width = 15, textvariable = P)
 Label_P_unit = Label(Frame_result, text = " N")
 # create the label widgets to show text
 
+
 r = StringVar()
 r.set("0")
-e_R = Entry(Frame_enter, width = 15, textvariable = r)
-
+e_R = Entry(Frame_enter, width = 10, textvariable = r)
 l = StringVar()
 l.set("0")
-e_L = Entry(Frame_enter, width = 15, textvariable = l)
+e_L = Entry(Frame_enter, width = 10, textvariable = l)
 # create the text box widgets 
 
 Button_P = Button(Frame_button, text = "Pinned ends", 
@@ -89,6 +148,7 @@ Button_Ff = Button(Frame_button, text = "Fixed and free ends",
 		command=lambda: ratio_func(2))
 Button_FG_ = Button(Frame_button, text = "Fixed and guided ends", 
 		command=lambda: ratio_func(1))
+
 Button_C = Button(Frame_calculate, text = "Calculate", 
 		command = calculate)
 # create the button widgets
@@ -99,7 +159,7 @@ options_p = [
 			"Brick"
 			]
 # create the options list
-
+clicked = StringVar()
 clicked.set(options_p[0])
 # set the default as "Wood"
 

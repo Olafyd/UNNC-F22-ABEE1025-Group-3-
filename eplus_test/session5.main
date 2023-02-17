@@ -1,0 +1,5 @@
+import MyModule
+
+inputs = [1,2,3,4,5,5,6,6,6]
+most_frequent_number, most_frequency =MyModule.most_frequent_number(inputs)
+print(f'The most frequent number is {most_frequent_num} ,

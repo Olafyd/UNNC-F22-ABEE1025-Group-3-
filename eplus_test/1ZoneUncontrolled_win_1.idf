@@ -1,0 +1,451 @@
+Building,
+  Simple One Zone w Windows,
+  0.0,
+  Suburbs,
+  0.04,
+  0.004,
+  MinimalShadowing,
+  30.0,
+  6.0;
+
+BuildingSurface:Detailed,
+  Zn001:Flr001,
+  Floor,
+  FLOOR,
+  ZONE ONE,
+  Surface,
+  Zn001:Flr001,
+  NoSun,
+  NoWind,
+  1.0,
+  4.0,
+  15.24,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  15.24,
+  0.0,
+  15.24,
+  15.24,
+  0.0;
+
+BuildingSurface:Detailed,
+  Zn001:Roof001,
+  Roof,
+  ROOF31,
+  ZONE ONE,
+  Outdoors,
+  ,
+  SunExposed,
+  WindExposed,
+  0.0,
+  4.0,
+  0.0,
+  15.24,
+  4.572,
+  0.0,
+  0.0,
+  4.572,
+  15.24,
+  0.0,
+  4.572,
+  15.24,
+  15.24,
+  4.572;
+
+BuildingSurface:Detailed,
+  Zn001:Wall001,
+  Wall,
+  R13WALL,
+  ZONE ONE,
+  Outdoors,
+  ,
+  SunExposed,
+  WindExposed,
+  0.5,
+  4.0,
+  0.0,
+  0.0,
+  3.5,
+  0.0,
+  0.0,
+  0.0,
+  15.24,
+  0.0,
+  0.0,
+  15.24,
+  0.0,
+  3.5;
+
+BuildingSurface:Detailed,
+  Zn001:Wall002,
+  Wall,
+  R13WALL,
+  ZONE ONE,
+  Outdoors,
+  ,
+  SunExposed,
+  WindExposed,
+  0.5,
+  4.0,
+  15.24,
+  0.0,
+  3.5,
+  15.24,
+  0.0,
+  0.0,
+  15.24,
+  15.24,
+  0.0,
+  15.24,
+  15.24,
+  3.5;
+
+BuildingSurface:Detailed,
+  Zn001:Wall003,
+  Wall,
+  R13WALL,
+  ZONE ONE,
+  Outdoors,
+  ,
+  SunExposed,
+  WindExposed,
+  0.5,
+  4.0,
+  15.24,
+  15.24,
+  3.5,
+  15.24,
+  15.24,
+  0.0,
+  0.0,
+  15.24,
+  0.0,
+  0.0,
+  15.24,
+  3.5;
+
+BuildingSurface:Detailed,
+  Zn001:Wall004,
+  Wall,
+  R13WALL,
+  ZONE ONE,
+  Outdoors,
+  ,
+  SunExposed,
+  WindExposed,
+  0.5,
+  4.0,
+  0.0,
+  15.24,
+  3.5,
+  0.0,
+  15.24,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  3.5;
+
+Construction,
+  DoubleClear,
+  SimpleWindow:DOUBLE PANE WINDOW;
+
+Construction,
+  FLOOR,
+  C5 - 4 IN HW CONCRETE;
+
+Construction,
+  R13WALL,
+  R13LAYER;
+
+Construction,
+  ROOF31,
+  R31LAYER;
+
+FenestrationSurface:Detailed,
+  Zn001:Wall001:Win001,
+  Window,
+  DoubleClear,
+  Zn001:Wall001,
+  ,
+  0.5,
+  ,
+  1.0,
+  4.0,
+  0.548,
+  0.0,
+  2.5,
+  0.548,
+  0.0,
+  0.5,
+  8.548,
+  0.0,
+  0.5,
+  8.548,
+  0.0,
+  2.5;
+
+GlobalGeometryRules,
+  UpperLeftCorner,
+  Counterclockwise,
+  World;
+
+HeatBalanceAlgorithm,
+  ConductionTransferFunction;
+
+Material,
+  C5 - 4 IN HW CONCRETE,
+  MediumRough,
+  0.1014984,
+  1.729577,
+  2242.585,
+  836.8,
+  0.9,
+  0.65,
+  0.65;
+
+Material:NoMass,
+  R13LAYER,
+  Rough,
+  5.290965,
+  0.9,
+  0.75,
+  0.75;
+
+Material:NoMass,
+  R31LAYER,
+  Rough,
+  5.456,
+  0.9,
+  0.75,
+  0.75;
+
+Output:Constructions,
+  Constructions;
+
+Output:Meter:MeterFileOnly,
+  EnergyTransfer:Building,
+  Hourly;
+
+Output:Meter:MeterFileOnly,
+  EnergyTransfer:Facility,
+  Hourly;
+
+Output:Surfaces:Drawing,
+  DXF;
+
+Output:Surfaces:List,
+  Details;
+
+Output:Table:SummaryReports,
+  AllSummary;
+
+Output:Variable,
+  *,
+  Site Outdoor Air Drybulb Temperature,
+  Timestep;
+
+Output:Variable,
+  *,
+  Zone Mean Air Temperature,
+  Timestep;
+
+Output:Variable,
+  *,
+  Zone Windows Total Transmitted Solar Radiation Rate,
+  Timestep;
+
+Output:Variable,
+  ZN001:WALL001,
+  Surface Outside Face Incident Solar Radiation Rate per Area,
+  Timestep;
+
+Output:Variable,
+  ZN001:WALL001,
+  Surface Outside Face Sunlit Fraction,
+  Timestep;
+
+Output:Variable,
+  ZN001:WALL001,
+  Surface Inside Face Temperature,
+  Timestep;
+
+Output:Variable,
+  ZN001:WALL001,
+  Surface Outside Face Temperature,
+  Timestep;
+
+Output:Variable,
+  ZN001:WALL001:WIN001,
+  Surface Outside Face Incident Solar Radiation Rate per Area,
+  Timestep;
+
+Output:Variable,
+  ZN001:WALL001:WIN001,
+  Surface Outside Face Sunlit Fraction,
+  Timestep;
+
+Output:Variable,
+  ZN001:WALL001:WIN001,
+  Surface Window Transmitted Solar Radiation Rate,
+  Timestep;
+
+Output:Variable,
+  ZN001:WALL001:WIN001,
+  Surface Inside Face Temperature,
+  Timestep;
+
+Output:Variable,
+  ZN001:WALL001:WIN001,
+  Surface Outside Face Temperature,
+  Timestep;
+
+Output:VariableDictionary,
+  regular;
+
+OutputControl:Table:Style,
+  HTML;
+
+RunPeriod,
+  Run Period 1,
+  1.0,
+  1.0,
+  ,
+  1.0,
+  1.0,
+  ,
+  Tuesday,
+  Yes,
+  Yes,
+  No,
+  Yes,
+  Yes;
+
+ScheduleTypeLimits,
+  Fraction,
+  0.0,
+  1.0,
+  Continuous;
+
+SimulationControl,
+  No,
+  No,
+  No,
+  No,
+  Yes,
+  No,
+  1.0;
+
+Site:GroundTemperature:BuildingSurface,
+  18.89,
+  18.92,
+  19.02,
+  19.12,
+  19.21,
+  19.23,
+  19.07,
+  19.32,
+  19.09,
+  19.21,
+  19.13,
+  18.96;
+
+Site:Location,
+  Denver Stapleton Intl Arpt CO USA WMO=724690,
+  39.77,
+  -104.87,
+  -7.0,
+  1611.0;
+
+SizingPeriod:DesignDay,
+  Denver Stapleton Intl Arpt Ann Clg 1% Condns DB=>MWB,
+  7.0,
+  21.0,
+  SummerDesignDay,
+  32.6,
+  15.2,
+  ,
+  ,
+  WetBulb,
+  15.6,
+  ,
+  ,
+  ,
+  ,
+  83411.0,
+  4.0,
+  120.0,
+  No,
+  No,
+  No,
+  ASHRAEClearSky,
+  ,
+  ,
+  ,
+  ,
+  1.0;
+
+SizingPeriod:DesignDay,
+  Denver Stapleton Intl Arpt Ann Htg 99% Condns DB,
+  12.0,
+  21.0,
+  WinterDesignDay,
+  -16.0,
+  0.0,
+  ,
+  ,
+  WetBulb,
+  -16.0,
+  ,
+  ,
+  ,
+  ,
+  83411.0,
+  2.3,
+  180.0,
+  No,
+  No,
+  No,
+  ASHRAEClearSky,
+  ,
+  ,
+  ,
+  ,
+  0.0;
+
+SurfaceConvectionAlgorithm:Inside,
+  TARP;
+
+SurfaceConvectionAlgorithm:Outside,
+  DOE-2;
+
+Timestep,
+  4.0;
+
+Version,
+  9.5;
+
+WindowMaterial:SimpleGlazingSystem,
+  SimpleWindow:DOUBLE PANE WINDOW,
+  1.5,
+  0.7300000000000004,
+  0.812;
+
+Zone,
+  ZONE ONE,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  1.0,
+  1.0,
+  Autocalculate,
+  Autocalculate;
+
+

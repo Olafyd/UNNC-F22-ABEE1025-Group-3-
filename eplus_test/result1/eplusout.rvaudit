@@ -1,0 +1,16 @@
+ ReadVarsESO
+ processing:./1ZoneUncontrolled_win_1.rvi
+ input file:./result1/eplusout.eso
+ output file:./result1/eplusout.csv
+ getting all vars from:./result1/eplusout.eso
+  number variables requested for output=          12
+ ReadVars Run Time=00hr 00min  0.09sec
+ ReadVarsESO program completed successfully.
+ ReadVarsESO
+ processing:./1ZoneUncontrolled_win_1.mvi
+ input file:./result1/eplusout.mtr
+ output file:./result1/eplusmtr.csv
+ getting all vars from:./result1/eplusout.mtr
+  number variables requested for output=           2
+ ReadVars Run Time=00hr 00min  0.02sec
+ ReadVarsESO program completed successfully.

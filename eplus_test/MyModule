@@ -1,0 +1,47 @@
+# This is a function that I can run in Jupyter Notebook
+def most_frequent_number(int_list):
+    """
+    this function calculayes yje moasy frequant neumbers
+    args
+    int lisy:puyjonlisy]
+    """
+    res_dict = {} # key is the integer, the value is the appreance times, e.g. {4: 3} means
+                    # 4 has appeared for 3 times
+    current_most_frequency_number = None
+    current_most_frequent_times = None
+    #  [1, 4, 12, 53, 21, 11, 12, 21, 22, 2, 3, 4, 6, 11, 12, 4, 11]
+    for this_item in int_list:
+        print('=============this iteration=================')
+        print(f'integer: {this_item}')
+        if this_item in res_dict:    
+            this_item_appreance_times = res_dict[this_item] # before
+            this_item_appreance_times += 1
+            res_dict[this_item] = this_item_appreance_times # after I met this integer again
+            # test whether or not this item is the current most frequent number
+            if current_most_frequency_number is None:
+                current_most_frequency_number = this_item
+                current_most_frequent_times = this_item_appreance_times
+            else:
+                if this_item_appreance_times > current_most_frequent_times:
+                    # do result updating
+                    current_most_frequent_times = this_item_appreance_times
+                    current_most_frequency_number = this_item
+                elif this_item_appreance_times == current_most_frequent_times:
+                    # draw condition
+                    if this_item <= current_most_frequency_number:
+                        # do result updating
+                        current_most_frequent_times = this_item_appreance_times
+                        current_most_frequency_number = this_item
+                    else:
+                        pass
+                else:
+                    pass
+        else:
+            # this is the first time to encounter this item
+            res_dict[this_item] = 1
+            if current_most_frequency_number is None:
+                current_most_frequency_number = this_item
+                current_most_frequent_times = 1
+            
+        print(f'results after this iteration: {current_most_frequency_number}, {current_most_frequent_times}')
+    return (current_most_frequency_number, current_most_frequent_times)
